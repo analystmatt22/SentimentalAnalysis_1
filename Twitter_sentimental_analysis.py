@@ -132,6 +132,26 @@ data_1['stemmed_data'] = data_1['data_remove_stopwords'].apply(lambda words: [st
 data_1.drop(['preprocessed_tweet', 'spelling', 'token_data', 'data_remove_stopwords'], axis = 1, inplace =True)
 print(data_1.keys())
 
+'''Download GloVe Pre-trained Word Vectors:
+
+You can download pre-trained GloVe word vectors from the GloVe website (https://nlp.stanford.edu/projects/glove/). You typically have various dimension options, such as 50, 100, 200, or 300. Choose the one that suits your needs.'''
+
+import numpy as np
+
+# Load pre-trained GloVe vectors into a dictionary
+glove_embeddings = {}
+embedding_file = './glove.6B.300d.txt'  # Change this to your file path
+with open(embedding_file, 'r', encoding='utf-8') as file:
+    for line in file:
+        values = line.split()
+        word = values[0]
+        vector = np.array(values[1:], dtype='float32')
+        glove_embeddings[word] = vector
+
+
+
+
+
 
 
 
